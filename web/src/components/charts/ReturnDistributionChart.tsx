@@ -1,6 +1,5 @@
 "use client";
 
-import { colors, fonts, palette } from "@/lib/theme";
 import type { ReturnDistribution } from "@/lib/types";
 
 interface Props {

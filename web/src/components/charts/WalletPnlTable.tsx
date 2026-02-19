@@ -1,6 +1,6 @@
 "use client";
 
-import { colors, formatUSD } from "@/lib/theme";
+import { formatUSD } from "@/lib/theme";
 import type { WalletPnL } from "@/lib/types";
 
 interface Props {

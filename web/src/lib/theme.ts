@@ -84,7 +84,7 @@ export function formatPct(n: number, decimals = 1): string {
 }
 
 /** Format as USD */
-export function formatUSD(n: number, decimals = 0): string {
+export function formatUSD(n: number): string {
   if (n < 0) return `-$${formatNumber(Math.round(Math.abs(n)))}`;
   return `$${formatNumber(Math.round(n))}`;
 }

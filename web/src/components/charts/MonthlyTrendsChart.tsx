@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell,
+  BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Cell,
 } from "recharts";
 import { colors, fonts, formatCompact } from "@/lib/theme";
 import type { MonthlyTrend } from "@/lib/types";

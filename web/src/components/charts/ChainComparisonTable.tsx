@@ -1,6 +1,6 @@
 "use client";
 
-import { colors, formatNumber } from "@/lib/theme";
+import { formatNumber } from "@/lib/theme";
 import type { ChainComparison } from "@/lib/types";
 
 interface Props {
