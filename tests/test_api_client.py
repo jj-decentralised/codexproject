@@ -3,16 +3,25 @@
 from __future__ import annotations
 
 import json
+import os
 import pytest
 from unittest.mock import AsyncMock, patch, MagicMock
 
 from src.api.budget_tracker import BudgetTracker, BudgetExhaustedError
 from src.api.rate_limiter import TokenBucketRateLimiter
 
+TEST_DB_PATH = "/tmp/test_budget.db"
+
 
 class TestBudgetTracker:
     def setup_method(self):
-        self.tracker = BudgetTracker(limit=100, db_path="/tmp/test_budget.db")
+        if os.path.exists(TEST_DB_PATH):
+            os.remove(TEST_DB_PATH)
+        self.tracker = BudgetTracker(limit=100, db_path=TEST_DB_PATH)
+
+    def teardown_method(self):
+        if os.path.exists(TEST_DB_PATH):
+            os.remove(TEST_DB_PATH)
 
     def test_record_call(self):
         count = self.tracker.record_call("test", "filterTokens", "hash1")
