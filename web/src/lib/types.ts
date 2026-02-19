@@ -104,4 +104,6 @@ export interface DashboardData {
   rocAuc: number;
   heatmap: HeatmapCell[];
   valueFlows: ValueFlow[];
+  liquidityVsSurvival: { x: number; y: number }[];
+  sniperVsReturn: { x: number; y: number }[];
 }

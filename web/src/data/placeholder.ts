@@ -133,4 +133,18 @@ export const placeholderData: DashboardData = {
     { source: "Retail", target: "Insider", value: 178_000_000 },
     { source: "Retail", target: "Bundler", value: 133_000_000 },
   ],
+
+  // Scatter plot: initial liquidity vs 7-day survival rate
+  liquidityVsSurvival: Array.from({ length: 200 }, () => {
+    const liq = Math.exp(Math.random() * 8 + 4); // $50 to $150k
+    const survivalProb = 0.02 + 0.08 * (1 / (1 + Math.exp(-0.5 * (Math.log(liq) - 8)))) + (Math.random() - 0.5) * 0.04;
+    return { x: liq, y: Math.max(0, Math.min(1, survivalProb)) };
+  }),
+
+  // Scatter plot: sniper count vs return
+  sniperVsReturn: Array.from({ length: 200 }, () => {
+    const snipers = Math.floor(Math.random() * 60);
+    const baseReturn = -0.5 - snipers * 0.008 + (Math.random() - 0.5) * 0.6;
+    return { x: snipers, y: Math.max(-1, Math.min(5, baseReturn)) };
+  }),
 };
