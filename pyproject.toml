@@ -19,6 +19,8 @@ dependencies = [
     "seaborn>=0.13",
     "tabulate>=0.9",
     "python-dotenv>=1.0",
+    "plotly>=5.18",
+    "kaleido>=0.2",
 ]
 
 [project.optional-dependencies]

@@ -12,3 +12,16 @@ build/
 .mypy_cache/
 .ruff_cache/
 *.ipynb_checkpoints/
+
+# Next.js / Web
+web/node_modules/
+web/.next/
+web/out/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

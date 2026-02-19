@@ -101,9 +101,29 @@ async def main():
         # Phase 2c: Wallet PnL (identify top wallets from events)
         logger.info("=== Phase 2c: Wallet PnL Collection ===")
         wallets = WalletCollector(client)
-        # Collect for a sample of wallets found in event data
-        # This would normally be computed from event data; placeholder for now
-        logger.info("Wallet collection: implement after event data analysis")
+
+        # Extract top wallets from collected event data
+        events_dir = "data/raw/events"
+        wallet_counts: dict[str, int] = {}
+        import glob, json
+        for event_file in glob.glob(f"{events_dir}/*.parquet"):
+            try:
+                edf = pd.read_parquet(event_file)
+                if "maker" in edf.columns:
+                    for maker in edf["maker"].dropna().unique():
+                        wallet_counts[maker] = wallet_counts.get(maker, 0) + 1
+            except Exception:
+                continue
+
+        if wallet_counts:
+            # Top 500 wallets by number of unique tokens traded
+            top_wallets = sorted(wallet_counts.items(), key=lambda x: x[1], reverse=True)[:500]
+            wallet_addresses = [w[0] for w in top_wallets]
+            logger.info("Found %d unique wallets, collecting top %d", len(wallet_counts), len(wallet_addresses))
+            await wallets.collect_top_wallets(wallet_addresses, network_id=1399811149)
+        else:
+            logger.warning("No event data found — skipping wallet collection")
+        logger.info("Wallet PnL complete. Calls: %d", client.budget.total_calls)
 
         # Phase 2d: Detailed stats
         logger.info("=== Phase 2d: Detailed Pair Stats ===")

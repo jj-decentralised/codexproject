@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --navy: #0A2240;
+  --steel: #4A7FB5;
+  --red: #C4403D;
+  --sage: #7B9E87;
+  --tan: #D4A574;
+  --light-gray: #E8E8E8;
+  --medium-gray: #999999;
+  --dark-gray: #333333;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: 'Inter', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Menlo', monospace;
+}
+
+body {
+  background: #ffffff;
+  color: #1a1a1a;
+  font-family: 'Inter', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* WSJ-style typography */
+h1, h2, h3, h4 {
+  font-family: Georgia, 'Merriweather', serif;
+  color: #1a1a1a;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Stat cards */
+.stat-card {
+  border-bottom: 2px solid #E8E8E8;
+  padding-bottom: 1rem;
+}
+
+/* Table styling — horizontal rules only */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+thead th {
+  border-bottom: 2px solid #333333;
+  font-weight: 600;
+  text-align: left;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #333333;
+}
+
+tbody td {
+  border-bottom: 1px solid #E8E8E8;
+  padding: 8px 12px;
+  font-size: 0.875rem;
+}
+
+tbody tr:last-child td {
+  border-bottom: 2px solid #333333;
+}
+
+/* Monospace numbers */
+.num {
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', 'Menlo', monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Negative values in muted red */
+.negative {
+  color: #C4403D;
+}
+
+.positive {
+  color: #7B9E87;
+}
+
+/* Source attribution */
+.source {
+  font-size: 0.7rem;
+  font-style: italic;
+  color: #999999;
+  margin-top: 0.5rem;
+}
+
+/* Section dividers */
+.section-divider {
+  border-top: 1px solid #E8E8E8;
+  margin: 3rem 0;
+}
